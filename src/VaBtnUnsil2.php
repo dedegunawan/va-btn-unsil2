@@ -11,7 +11,10 @@ namespace DedeGunawan\VaBtnUnsil2;
 
 
 use DedeGunawan\VaBtnUnsil2\Exceptions\BaseException;
+use DedeGunawan\VaBtnUnsil2\Requests\CreateRequest;
+use DedeGunawan\VaBtnUnsil2\Requests\DeleteRequest;
 use DedeGunawan\VaBtnUnsil2\Requests\InquiryRequest;
+use DedeGunawan\VaBtnUnsil2\Requests\UpdateRequest;
 use DedeGunawan\VaBtnUnsil2\Responses\BaseResponse;
 use DedeGunawan\VaBtnUnsil2\Services\Api;
 
@@ -59,24 +62,39 @@ class VaBtnUnsil2
         return $this->getResponse();
     }
 
-    public function create()
+    public function create(CreateRequest $request)
     {
-
+        $this->setRequest($request);
+        $request->validate();
+        $this->getApi()->setEndpointUrl("createVA");
+        $response = $this->getApi()->send($request);
+        $this->setResponse($response);
+        return $this->getResponse();
     }
 
-    public function update()
+    public function update(UpdateRequest $request)
     {
-
+        $this->setRequest($request);
+        $request->validate();
+        $this->getApi()->setEndpointUrl("updVA");
+        $response = $this->getApi()->send($request);
+        $this->setResponse($response);
+        return $this->getResponse();
     }
 
-    public function delete()
+    public function delete(DeleteRequest $request)
     {
-
+        $this->setRequest($request);
+        $request->validate();
+        $this->getApi()->setEndpointUrl("deleteVA");
+        $response = $this->getApi()->send($request);
+        $this->setResponse($response);
+        return $this->getResponse();
     }
 
     public function callback()
     {
-
+        throw new BaseException();
     }
 
     /**
