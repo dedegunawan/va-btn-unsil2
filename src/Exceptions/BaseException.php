@@ -21,6 +21,11 @@ class BaseException extends \Exception
         parent::__construct($message, $this->code, $previous);
     }
 
+    public function niceCode()
+    {
+        return str_pad($this->code, 3, '0', STR_PAD_LEFT);
+    }
+
     /**
      * @return mixed
      */
