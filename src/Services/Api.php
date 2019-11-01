@@ -94,6 +94,8 @@ class Api
             $reflection = new \ReflectionClass(ExceptionChooser::choose($rsp));
             $instance = $reflection->newInstanceArgs([$rspdesc]);
             if (!$instance instanceof \Throwable) throw new BaseException();
+            $instance->setRequest($this->getRequest());
+            $instance->setResponse($this->getResponse());
             throw $instance;
         }
 
