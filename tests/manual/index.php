@@ -15,13 +15,13 @@ require_once '../../vendor/autoload.php';
 \DedeGunawan\VaBtnUnsil2\Services\Api::setDebug(0);
 
 try {
-    $va = \DedeGunawan\VaBtnUnsil2\Entities\VaNumberEntity::build('9333300100000000001');
-    $request = \DedeGunawan\VaBtnUnsil2\Requests\InquiryRequest::build([
+    $va = \DedeGunawan\VaBtnUnsil2\Entities\VaNumberEntity::build('94572001000001010');
+    $request = \DedeGunawan\VaBtnUnsil2\Requests\CreateRequest::build([
         'ref' => \DedeGunawan\VaBtnUnsil2\Services\RefGenerator::generate(),
         'va' => (string) $va
     ]);
 
-    \DedeGunawan\VaBtnUnsil2\VaBtnUnsil2::getInstance()->inquiry($request);
+    \DedeGunawan\VaBtnUnsil2\VaBtnUnsil2::getInstance()->create($request);
 
     $response = \DedeGunawan\VaBtnUnsil2\VaBtnUnsil2::getInstance()->getResponse();
 

@@ -24,7 +24,7 @@ class VaNumberEntity extends BaseEntity
             $datas = self::validator($datas);
         } else {
             $string = $datas;
-            if (strlen($string)>19) throw new \Exception("Maksimal VA 19 karakter");
+            if (strlen($string)>17) throw new \Exception("Maksimal VA 17 karakter");
             $datas = [
                 'prefix' => substr($string, 0, 1),
                 'kode_institusi' => substr($string, 1, 4),
@@ -51,7 +51,7 @@ class VaNumberEntity extends BaseEntity
 
         $customer_number = @$datas['customer_number'];
         if (strlen($customer_number) > 11) throw new \Exception("Customer Number VA tidak valid, panjang karakter maksimal 10 karakter");
-        $datas['customer_number'] = str_pad(@$datas['customer_number'], 11, '0', STR_PAD_LEFT);
+        $datas['customer_number'] = str_pad(@$datas['customer_number'], 9, '0', STR_PAD_LEFT);
 
         return $datas;
     }
